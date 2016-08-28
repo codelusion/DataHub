@@ -1,0 +1,25 @@
+{
+  "name": "DataHub",
+  "version": "1.0.0",
+  "description": "DataHub for data collection",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "data hub daemon"
+  ],
+  "author": "ash@aisaac.io",
+  "license": "SEE LICENSE IN License.txt",
+  "dependencies": {
+    "bluebird": "^3.4.3",
+    "http-status": "^0.2.3",
+    "lokijs": "^1.4.1",
+    "restify": "^4.1.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2",
+    "sinon": "^1.17.5"
+  }
+}

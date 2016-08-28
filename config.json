@@ -1,0 +1,16 @@
+{
+  "resources": [
+    {
+      "name": "microserviceBox",
+      "description": "VM hosting the microservice",
+      "endpoints": [
+        {
+          "name": "memory-usage",
+          "url": "https://domain.com/cmd/mem-usage",
+          "interval": 6,
+          "clientType": "http-json"
+        }
+      ]
+    }
+  ]
+}
