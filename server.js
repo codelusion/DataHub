@@ -3,12 +3,21 @@
 var restify = require('restify');
 var HTTPStatus = require('http-status');
 
-var db = require('./lib/db');
-var metricsCollector = require('./lib/collector');
+var config = require('./config');
+
+var LokiBasedDataHub = require('./lib/LokiBasedDataHub');
+
+var dataHub = LokiBasedDataHub.create();
+
+config.resources.forEach(function(resource) {
+    dataHub.plugResource(resource);
+});
+
+dataHub.start();
 
 var PORT = process.env.GS_PORT | 9000;
 
-var serviceName = 'monit';
+var serviceName = 'DataHub';
 var serviceVersion = '1.0.0';
 
 var server = restify.createServer({
@@ -18,20 +27,8 @@ var server = restify.createServer({
 
 server.use(restify.bodyParser());
 
-server.get('/metrics', function (req, res, next) {
-    var result = {a : 'b'};
-    res.send(HTTPStatus.HTTP_OK, result);
-    return next();
-});
-
-server.get('/metrics/:minutes', function (req, res, next) {
-    var result = {'minutes' : req.params.minutes};
-    res.send(HTTPStatus.HTTP_OK, result);
-    return next();
-});
-
-server.get('/metrics/:collection/:minutes', function (req, res, next) {
-    var result = {a : 'b'};
+server.get('/metrics/:resource/:minutes', function (req, res, next) {
+    var result = dataHub.getResourceData(req.params.resource, minutes);
     res.send(HTTPStatus.HTTP_OK, result);
     return next();
 });

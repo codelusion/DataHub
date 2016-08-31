@@ -1,13 +1,19 @@
 {
   "resources": [
     {
-      "name": "microserviceBox",
-      "description": "VM hosting the microservice",
+      "name": "Anduril",
+      "description": "Anduril Laptop",
       "endpoints": [
         {
           "name": "memory-usage",
-          "url": "https://domain.com/cmd/mem-usage",
+          "url": "http://localhost:8080/cmd/mem-usage",
           "interval": 6,
+          "clientType": "http-json"
+        },
+        {
+          "name": "cpu-usage",
+          "url": "http://localhost:8080/cmd/cpu-usage",
+          "interval": 10,
           "clientType": "http-json"
         }
       ]

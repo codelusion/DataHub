@@ -12,10 +12,12 @@
   "author": "ash@aisaac.io",
   "license": "SEE LICENSE IN License.txt",
   "dependencies": {
+    "block-stream": "0.0.9",
     "bluebird": "^3.4.3",
     "http-status": "^0.2.3",
     "lokijs": "^1.4.1",
     "restify": "^4.1.1",
+    "sanitize-filename": "^1.6.0",
     "shelljs": "^0.7.4"
   },
   "devDependencies": {
